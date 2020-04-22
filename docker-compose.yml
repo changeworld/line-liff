@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD:
+    links:
+      - db
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:11.3
+    ports:
+      - "5432"
+    volumes:
+      - db-volume:/var/lib/postgresvolumes
+volumes:
+  db-volume:
