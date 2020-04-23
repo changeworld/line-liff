@@ -1,2 +1,49 @@
+<script type="text/javascript">
+window.onload = function (e) {
+    // init で初期化。基本情報を取得。
+    // https://developers.line.me/ja/reference/liff/#initialize-liff-app
+    liff.init(function (data) {
+        initializeApp(data);
+    });
+};
+
+function initializeApp(data) {
+    document.getElementById('languagefield').textContent = data.language;
+    document.getElementById('viewtypefield').textContent = data.context.viewType;
+    document.getElementById('useridfield').textContent = data.context.userId;
+    document.getElementById('utouidfield').textContent = data.context.utouId;
+    document.getElementById('roomidfield').textContent = data.context.roomId;
+    document.getElementById('groupidfield').textContent = data.context.groupId;
+}
+</script>
 <h1>Dashboards#index</h1>
 <p>Find me in app/views/dashboards/index.html.erb</p>
+<div id="liffdata">
+  <h2>LIFF Data</h2>
+  <table border="1">
+    <tr>
+      <th>language</th>
+      <td id="languagefield"></td>
+    </tr>
+    <tr>
+      <th>context.viewType</th>
+      <td id="viewtypefield"></td>
+    </tr>
+    <tr>
+      <th>context.userId</th>
+      <td id="useridfield"></td>
+    </tr>
+    <tr>
+      <th>context.utouId</th>
+      <td id="utouidfield"></td>
+    </tr>
+    <tr>
+      <th>context.roomId</th>
+      <td id="roomidfield"></td>
+    </tr>
+    <tr>
+      <th>context.groupId</th>
+      <td id="groupidfield"></td>
+    </tr>
+  </table>
+</div>
